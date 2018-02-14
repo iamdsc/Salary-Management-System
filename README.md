@@ -1,2 +1,2 @@
 # Salary-Management-System
-A basic Java app for managing salary of the employees.   
+## A basic Java app for managing salary of the employees. ##   
