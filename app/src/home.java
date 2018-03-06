@@ -5,7 +5,7 @@ public class home {
         SwingUtilities.invokeLater( new Runnable(){
             public void run(){
                 JFrame frame = new JFrame("IIIT KALYANI");
-                frame.setSize(800,600);
+                frame.setSize(800,700);
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.setVisible(true);
             }
