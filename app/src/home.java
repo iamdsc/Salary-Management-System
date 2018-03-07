@@ -17,14 +17,13 @@ public class home{
                 JButton b1 = new JButton("Generate Salary");
                 JButton b2 = new JButton("View Record");
                 b1.setBounds(250,300,300,40);
-                b2.setBounds(250,450,300,40);
-                b1.setFont(new Font("Serif", Font.PLAIN, 20 ));
-                b2.setFont(new Font("Serif", Font.PLAIN, 20 ));
+                b2.setBounds(250,400,300,40);
+                b1.setFont(new Font("Serif", Font.BOLD, 20 ));
+                b2.setFont(new Font("Serif", Font.BOLD, 20 ));
 
                 b1.addActionListener(new ActionListener() {
                     public void actionPerformed(ActionEvent e) {
                         GenerateSalary gen = new GenerateSalary();
-
                     }
                 });
 
@@ -35,8 +34,8 @@ public class home{
 
                 l2=new JLabel("Salary Management System");
                 l1=new JLabel(" Indian Institute of Information Technology, Kalyani",imageIcon,2);
-                l1.setFont(new Font("Serif", Font.PLAIN, 30));
-                l2.setFont(new Font("Serif", Font.PLAIN, 25));
+                l1.setFont(new Font("Serif", Font.BOLD, 27));
+                l2.setFont(new Font("Serif", Font.ITALIC, 25));
                 l1.setBounds(60,50,700,50);
                 l2.setBounds(250,100,350,50);
 
