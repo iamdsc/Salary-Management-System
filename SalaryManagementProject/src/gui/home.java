@@ -33,6 +33,12 @@ public class home{
                         dao.getEmployee();
                     }
                 });
+                b2.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        ViewYearlyRecord rec = new ViewYearlyRecord();
+                    }
+                });
+
 
                 ImageIcon imageIcon = new ImageIcon("img/logo.png"); // load the image to a imageIcon
                 Image image = imageIcon.getImage(); // transform it
@@ -45,6 +51,7 @@ public class home{
                 l2.setFont(new Font("Serif", Font.ITALIC, 25));
                 l1.setBounds(60,50,700,50);
                 l2.setBounds(250,100,350,50);
+
 
                 panel.add(l1);
                 panel.add(l2);
