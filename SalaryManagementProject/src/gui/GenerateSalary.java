@@ -6,14 +6,9 @@ import java.awt.*;
 public class GenerateSalary extends JFrame {
 
     JLabel l, l1, name, designation, basicsal, hra, da, total;
-    public static JTextField t1;
-    public static JTextField t2;
-    public static JTextField t3;
-    public static JTextField t4;
-    public static JComboBox cb1;
-    public static JComboBox cb2;
-    public JButton btn1;
-    public JButton btn2;
+    public static JTextField t1, t2, t3, t4;
+    public static JComboBox cb1, cb2;
+    public JButton btn1, btn2;
 
     public GenerateSalary() {
         super("IIIT KALYANI");
@@ -32,14 +27,9 @@ public class GenerateSalary extends JFrame {
 
         //Temporary string array which will be replaced by database
         String employee_name[] = {"", "Sambhunath Datta", "Madhumita Sengupta", "Imon Mukherjee"};
-        cb1 = new JComboBox();
-        cb1.addItem("");
-        cb1.addItem("Sambhunath Datta");
-        cb1.addItem("Madhumita Sengupta");
-        cb1.addItem("Imon Mukherjee");
-
-
-        cb1.setBounds(300, 100, 250, 30);
+        cb1 = new JComboBox(employee_name);
+        ((JLabel)cb1.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
+        cb1.setBounds(300, 100, 200, 30);
         cb1.setFont(new Font("Serif", Font.PLAIN, 18));
         panel.add(cb1);
 
@@ -51,7 +41,8 @@ public class GenerateSalary extends JFrame {
         //Temporary string array which will be replaced by database
         String designate[] = {"", "Registrar", "Assistant Registrar", "Assistant Professor"};
         cb2 = new JComboBox(designate);
-        cb2.setBounds(300, 150, 250, 30);
+        ((JLabel)cb2.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
+        cb2.setBounds(300, 150, 200, 30);
         cb2.setFont(new Font("Serif", Font.PLAIN, 18));
         panel.add(cb2);
 
