@@ -10,7 +10,7 @@ public class Login {
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
                     JFrame frame = new JFrame("Salary Management System Login");
-                    ImageIcon img = new ImageIcon("C:\\Users\\Dilpreet Singh\\Desktop\\Salary-Management-System\\img\\logo.png");
+                    ImageIcon img = new ImageIcon("img/logo.png");
                     Image newImage = img.getImage().getScaledInstance(25,25,Image.SCALE_SMOOTH);
                     frame.setIconImage(newImage);
 
