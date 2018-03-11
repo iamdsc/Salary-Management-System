@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 public class home extends JFrame{
     public home(){
                 super("Salary Management System");
-                ImageIcon img = new ImageIcon("C:\\Users\\Dilpreet Singh\\Desktop\\Salary-Management-System\\img\\logo.png");
+                ImageIcon img = new ImageIcon("img/logo.png");
                 Image newImage = img.getImage().getScaledInstance(25,25,Image.SCALE_SMOOTH);
                 setIconImage(newImage);
 
