@@ -8,11 +8,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class home{
-    public static void main(String[] args){
-        SwingUtilities.invokeLater( new Runnable(){
-            public void run(){
-                JFrame frame = new JFrame("IIIT KALYANI");
+public class home extends JFrame{
+    public home(){
+                super("Salary Management System");
+                ImageIcon img = new ImageIcon("C:\\Users\\Dilpreet Singh\\Desktop\\Salary-Management-System\\img\\logo.png");
+                Image newImage = img.getImage().getScaledInstance(25,25,Image.SCALE_SMOOTH);
+                setIconImage(newImage);
 
                 JPanel panel = new JPanel();
                 panel.setLayout(null);
@@ -39,11 +40,7 @@ public class home{
                     }
                 });
 
-
-                ImageIcon imageIcon = new ImageIcon("img/logo.png"); // load the image to a imageIcon
-                Image image = imageIcon.getImage(); // transform it
-                Image newimg = image.getScaledInstance(50, 50,Image.SCALE_SMOOTH); // scale it the smooth way
-                imageIcon = new ImageIcon(newimg);
+                ImageIcon imageIcon = new ImageIcon(img.getImage().getScaledInstance(50, 50,Image.SCALE_SMOOTH));
 
                 l2=new JLabel("Salary Management System");
                 l1=new JLabel(" Indian Institute of Information Technology, Kalyani",imageIcon,2);
@@ -59,12 +56,9 @@ public class home{
                 panel.add(b1);
                 panel.add(b2);
 
-                frame.add(panel);
-                frame.setSize(800,700);
-                frame.setLocationRelativeTo(null);
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                frame.setVisible(true);
-            }
-        });
+                add(panel);
+                setSize(800,700);
+                setLocationRelativeTo(null);
+                setVisible(true);
     }
 }
