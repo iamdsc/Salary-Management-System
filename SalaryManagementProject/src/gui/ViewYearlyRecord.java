@@ -15,6 +15,9 @@ public class ViewYearlyRecord extends JFrame{
 
     public ViewYearlyRecord(){
         super("View Yearly Record");
+        ImageIcon img = new ImageIcon("img/logo.png");
+        Image newImage = img.getImage().getScaledInstance(25,25,Image.SCALE_SMOOTH);
+        setIconImage(newImage);
 
         JPanel panel = new JPanel();
         panel.setLayout(null);
@@ -101,3 +104,4 @@ public class ViewYearlyRecord extends JFrame{
         setVisible(true);
     }
 }
+
