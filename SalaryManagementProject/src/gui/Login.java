@@ -10,11 +10,11 @@ public class Login {
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
                     JFrame frame = new JFrame("Salary Management System Login");
-                    ImageIcon img = new ImageIcon("img/logo.png");
+                    ImageIcon img = new ImageIcon("C:\\Users\\Dilpreet Singh\\Desktop\\Salary-Management-System\\img\\logo.png");
                     Image newImage = img.getImage().getScaledInstance(25,25,Image.SCALE_SMOOTH);
                     frame.setIconImage(newImage);
 
-                    JLabel image, userLabel, passwordLabel;
+                    JLabel login,image, userLabel, passwordLabel;
                     JButton loginButton, resetButton;
                     JCheckBox showPassword;
 
@@ -23,8 +23,13 @@ public class Login {
 
                     image = new JLabel((new ImageIcon(img.getImage().getScaledInstance(150,150,Image.SCALE_SMOOTH))));
 
-                    image.setBounds(280, 20, img.getIconWidth(), img.getIconHeight());
+                    image.setBounds(280, 5, img.getIconWidth(), img.getIconHeight());
                     panel.add(image);
+
+                    login = new JLabel("Log in");
+                    login.setBounds(350,230,150,40);
+                    login.setFont(new Font("Serif", Font.BOLD, 30));
+                    panel.add(login);
 
                     userLabel = new JLabel("Username : ");
                     userLabel.setBounds(215, 300, 150, 30);
@@ -54,7 +59,7 @@ public class Login {
                     panel.add(showPassword);
 
                     loginButton = new JButton("LOGIN");
-                    loginButton.setBounds(350, 450, 100, 30);
+                    loginButton.setBounds(350, 480, 70, 30);
                     panel.add(loginButton);
 
                     loginButton.addActionListener(new ActionListener() {
@@ -75,7 +80,7 @@ public class Login {
                     });
 
                     resetButton = new JButton("RESET");
-                    resetButton.setBounds(350, 450, 100, 30);
+                    resetButton.setBounds(460, 480, 80, 30);
                     panel.add(resetButton);
 
                     resetButton.addActionListener(new ActionListener() {
