@@ -96,7 +96,7 @@ public class Login {
                                 passwordField.setEchoChar((char) 0);
 
                             } else {
-                                passwordField.setEchoChar('*');
+                                passwordField.setEchoChar('●');
                             }
                         }
                     });
