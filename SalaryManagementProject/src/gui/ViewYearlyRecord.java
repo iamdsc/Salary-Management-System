@@ -1,16 +1,20 @@
 package gui;
 
+import database.DAO_2;
+
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 
 public class ViewYearlyRecord extends JFrame{
 
     public static JComboBox cb1, cb2, cb3;
     public static JButton btn1;
+    public static DefaultTableModel model;
+    public JTable table;
     JLabel l,name, designation, year;
 
     public ViewYearlyRecord(){
@@ -21,8 +25,6 @@ public class ViewYearlyRecord extends JFrame{
 
         JPanel panel = new JPanel();
         panel.setLayout(null);
-
-        Cursor cur=new Cursor(Cursor.HAND_CURSOR);
 
         l = new JLabel("View Record");
         l.setFont(new Font("Serif", Font.ITALIC, 25));
@@ -73,28 +75,25 @@ public class ViewYearlyRecord extends JFrame{
         btn1.setBounds(350, 260, 100, 30);
         panel.add(btn1);
 
-        btn1.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e)
-            {
+        Object columnNames[] = {"MONTH", "BASIC SALARY", "HRA", "DA","TOTAL"};
+        DAO_2 dao2 = new DAO_2();
 
-            }
-        });
-
-        Object columns[] = {"MONTH", "BASIC SALARY", "HRA", "DA","TOTAL"};
-        Object data[][] = {{"January"," "," "," "," "},{"February"," "," "," "," "},{"March"," "," "," "," "},
-                {"April"," "," "," "," "},{"May"," "," "," "," "},{"June"," "," "," "," "},
-                {"July"," "," "," "," "},{"August"," "," "," "," "},{"September"," "," "," "," "},
-                {"October"," "," "," "," "},{"November"," "," "," "," "},{"December"," "," "," "," "}};
-        JTable jt = new JTable(data, columns);
-        jt.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
+        model = new DefaultTableModel(dao2.data,columnNames);
+        table = new JTable(model);
+        table.setFillsViewportHeight(true);
+        table.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment( JLabel.CENTER );
         for(int x=0;x<5;x++){
-            jt.getColumnModel().getColumn(x).setCellRenderer( centerRenderer );
+            table.getColumnModel().getColumn(x).setCellRenderer( centerRenderer );
         }
-        jt.setRowHeight(25);
-        JScrollPane scrollPane = new JScrollPane(jt);
+        table.setRowHeight(25);
+
+
+        JScrollPane scrollPane = new JScrollPane(table);
         scrollPane.setBorder(BorderFactory.createEmptyBorder(0, 100, 10, 100));
+        add(scrollPane);
+
 
         add(panel);
         add(scrollPane);
@@ -104,4 +103,3 @@ public class ViewYearlyRecord extends JFrame{
         setVisible(true);
     }
 }
-
