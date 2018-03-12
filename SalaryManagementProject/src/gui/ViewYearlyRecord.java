@@ -12,7 +12,7 @@ import java.awt.*;
 public class ViewYearlyRecord extends JFrame{
 
     public static JComboBox cb1, cb2, cb3;
-    public static JButton btn1;
+    public static JButton btn1, btn2;
     public static DefaultTableModel model;
     public JTable table;
     JLabel l,name, designation, year;
@@ -71,9 +71,14 @@ public class ViewYearlyRecord extends JFrame{
 
 
         btn1 = new JButton("View");
-        btn1.setFont(new Font("Serif", Font.BOLD, 20));
-        btn1.setBounds(350, 260, 100, 30);
+        btn1.setFont(new Font("Serif", Font.BOLD, 15));
+        btn1.setBounds(300, 260, 70, 30);
         panel.add(btn1);
+
+        btn2 = new JButton("Print");
+        btn2.setFont(new Font("Serif", Font.BOLD, 15));
+        btn2.setBounds(430, 260, 70, 30);
+        panel.add(btn2);
 
         Object columnNames[] = {"MONTH", "BASIC SALARY", "HRA", "DA","TOTAL"};
         DAO_2 dao2 = new DAO_2();
