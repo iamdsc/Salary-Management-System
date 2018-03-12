@@ -30,7 +30,7 @@ public class GenerateSalary extends JFrame {
         setIconImage(newImage);
 
         JPanel panel = new JPanel();
-        panel.setBackground(new Color(0, 0, 255));
+        panel.setBackground(new Color(0, 0, 139));
 
         panel.setLayout(null);
 
