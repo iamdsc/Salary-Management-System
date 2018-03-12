@@ -34,44 +34,44 @@ public class GenerateSalary extends JFrame {
         cb1 = new JComboBox(employee_name);
         ((JLabel)cb1.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
         cb1.setBounds(65, 100, 150, 30);
-        cb1.setFont(new Font("Serif", Font.PLAIN, 15));
+        cb1.setFont(new Font("Serif", Font.BOLD, 15));
         panel.add(cb1);
 
         designation = new JLabel("Designation :");
         designation.setFont(new Font("Serif", Font.BOLD, 18));
-        designation.setBounds(235, 100, 110, 30);
+        designation.setBounds(220, 100, 110, 30);
         panel.add(designation);
 
         //Temporary string array which will be replaced by database
         String designate[] = {"", "Registrar", "Assistant Registrar", "Assistant Professor"};
         cb2 = new JComboBox(designate);
         ((JLabel)cb2.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
-        cb2.setBounds(340, 100, 140, 30);
-        cb2.setFont(new Font("Serif", Font.PLAIN, 15));
+        cb2.setBounds(325, 100, 140, 30);
+        cb2.setFont(new Font("Serif", Font.BOLD, 15));
         panel.add(cb2);
 
         month = new JLabel("Month :");
         month.setFont(new Font("Serif", Font.BOLD, 18));
-        month.setBounds(500, 100, 100, 30);
+        month.setBounds(475, 100, 100, 30);
         panel.add(month);
-        
+
         String months[] = {"","JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE","JULY","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER"};
         cb4 = new JComboBox(months);
         ((JLabel)cb4.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
-        cb4.setBounds(560, 100, 80, 30);
-        cb4.setFont(new Font("Serif", Font.PLAIN, 15));
+        cb4.setBounds(550, 100, 90, 30);
+        cb4.setFont(new Font("Serif", Font.BOLD, 10));
         panel.add(cb4);
-        
+
         year = new JLabel("Year :");
         year.setFont(new Font("Serif", Font.BOLD, 18));
-        year.setBounds(640, 100, 100, 30);
+        year.setBounds(650, 100, 80, 30);
         panel.add(year);
 
         String years[] = {"", "2015", "2016", "2017", "2018"};
         cb3 = new JComboBox(years);
         ((JLabel)cb3.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
-        cb3.setBounds(700, 100, 80, 30);
-        cb3.setFont(new Font("Serif", Font.PLAIN, 15));
+        cb3.setBounds(700, 100, 70, 30);
+        cb3.setFont(new Font("Serif", Font.BOLD, 15));
         panel.add(cb3);
 
 
@@ -156,5 +156,5 @@ public class GenerateSalary extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
     }
-    
+
 }
