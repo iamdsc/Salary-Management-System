@@ -14,8 +14,7 @@ public class home extends JFrame{
 
     public home(){
 
-                super("Salary Management System");
-
+                super("Salary Management System");                
                 ImageIcon img = new ImageIcon("C:\\Users\\Akars\\Desktop\\swing\\iiit.png");
 
                 Image newImage = img.getImage().getScaledInstance(35,35,Image.SCALE_SMOOTH);
@@ -25,7 +24,7 @@ public class home extends JFrame{
 
 
                 JPanel panel = new JPanel();
-                panel.setBackground(new Color(0, 0, 255));
+                panel.setBackground(new Color(0, 0, 139));
                 
 
                 panel.setLayout(null);
