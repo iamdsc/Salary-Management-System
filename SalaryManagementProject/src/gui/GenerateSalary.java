@@ -7,9 +7,9 @@ public class GenerateSalary extends JFrame {
 
     JLabel l, l1, name, designation, month, year, basicsal, hra, da, total,sym1, sym2;
     public static JTextField t1, t2, t3, t4;
-    public static JComboBox cb1, cb2, cb3;
+    public static JComboBox cb1, cb2, cb3,cb4;
     public JButton btn1, btn2, btn3;
-    public static JSpinner months;
+    //public static JSpinner months;
 
     public GenerateSalary() {
         super("Generate Current Salary");
@@ -54,15 +54,14 @@ public class GenerateSalary extends JFrame {
         month.setFont(new Font("Serif", Font.BOLD, 18));
         month.setBounds(500, 100, 100, 30);
         panel.add(month);
-
-        SpinnerModel value = new SpinnerNumberModel(1, //initial value
-                        1, //minimum value
-                        12, //maximum value
-                        1); //step
-        months = new JSpinner(value);
-        months.setBounds(570,100,50,30);
-        panel.add(months);
-
+        
+        String months[] = {"","JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE","JULY","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER"};
+        cb4 = new JComboBox(months);
+        ((JLabel)cb4.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
+        cb4.setBounds(560, 100, 80, 30);
+        cb4.setFont(new Font("Serif", Font.PLAIN, 15));
+        panel.add(cb4);
+        
         year = new JLabel("Year :");
         year.setFont(new Font("Serif", Font.BOLD, 18));
         year.setBounds(640, 100, 100, 30);
