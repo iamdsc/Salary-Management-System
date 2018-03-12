@@ -24,15 +24,17 @@ public class ViewYearlyRecord extends JFrame{
         setIconImage(newImage);
 
         JPanel panel = new JPanel();
+        panel.setBackground(new Color(50, 0, 255));
         panel.setLayout(null);
 
         l = new JLabel("View Record");
-        l.setFont(new Font("Serif", Font.ITALIC, 25));
+        l.setFont(new Font("Tw Cen MT", Font.ITALIC, 30));
         l.setBounds(320, 20, 250, 50);
         panel.add(l);
 
         name = new JLabel("Name :");
         name.setFont(new Font("Serif", Font.BOLD, 20));
+        name.setForeground(new Color(255, 255, 255));
         name.setBounds(200, 100, 100, 30);
         panel.add(name);
 
@@ -41,11 +43,14 @@ public class ViewYearlyRecord extends JFrame{
         cb1 = new JComboBox(employee_name);
         ((JLabel)cb1.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
         cb1.setBounds(300, 100, 200, 30);
+        cb1.setForeground(new Color(0, 0, 0));
+        cb1.setBackground(new Color(240, 248, 255));
         cb1.setFont(new Font("Serif", Font.PLAIN, 18));
         panel.add(cb1);
 
         designation = new JLabel("Designation :");
         designation.setFont(new Font("Serif", Font.BOLD, 20));
+        designation.setForeground(new Color(255, 255, 255));
         designation.setBounds(150, 150, 150, 30);
         panel.add(designation);
 
@@ -54,11 +59,14 @@ public class ViewYearlyRecord extends JFrame{
         cb2 = new JComboBox(designate);
         ((JLabel)cb2.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
         cb2.setBounds(300, 150, 200, 30);
+        cb2.setForeground(new Color(0, 0, 0));
+        cb2.setBackground(new Color(240, 248, 255));
         cb2.setFont(new Font("Serif", Font.PLAIN, 18));
         panel.add(cb2);
 
         year = new JLabel("Year :");
         year.setFont(new Font("Serif", Font.BOLD, 20));
+        year.setForeground(new Color(255, 255, 255));
         year.setBounds(210, 200, 150, 30);
         panel.add(year);
 
@@ -66,17 +74,25 @@ public class ViewYearlyRecord extends JFrame{
         cb3 = new JComboBox(years);
         ((JLabel)cb3.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
         cb3.setBounds(350, 200, 100, 30);
+        cb3.setForeground(new Color(0, 0, 0));
+        cb3.setBackground(new Color(240, 248, 255));
         cb3.setFont(new Font("Serif", Font.PLAIN, 18));
         panel.add(cb3);
 
 
         btn1 = new JButton("View");
+        btn1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         btn1.setFont(new Font("Serif", Font.BOLD, 15));
+        btn1.setForeground(new Color(0, 0, 0));
+        btn1.setBackground(new Color(240, 248, 255));
         btn1.setBounds(300, 260, 70, 30);
         panel.add(btn1);
 
         btn2 = new JButton("Print");
+        btn2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         btn2.setFont(new Font("Serif", Font.BOLD, 15));
+        btn2.setForeground(new Color(0, 0, 0));
+        btn2.setBackground(new Color(240, 248, 255));
         btn2.setBounds(430, 260, 70, 30);
         panel.add(btn2);
 
@@ -97,6 +113,7 @@ public class ViewYearlyRecord extends JFrame{
 
         JScrollPane scrollPane = new JScrollPane(table);
         scrollPane.setBorder(BorderFactory.createEmptyBorder(0, 100, 10, 100));
+        scrollPane.setBackground(new Color(50, 0, 255));
         add(scrollPane);
 
 
