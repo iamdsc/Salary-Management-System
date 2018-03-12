@@ -19,6 +19,7 @@ public class Login {
                     JCheckBox showPassword;
 
                     JPanel panel = new JPanel();
+                    panel.setBackground(new Color(50, 0, 255));
                     panel.setLayout(null);
 
                     image = new JLabel((new ImageIcon(img.getImage().getScaledInstance(150,150,Image.SCALE_SMOOTH))));
@@ -26,13 +27,14 @@ public class Login {
                     image.setBounds(280, 5, img.getIconWidth(), img.getIconHeight());
                     panel.add(image);
 
-                    login = new JLabel("Log in");
-                    login.setBounds(350,230,150,40);
-                    login.setFont(new Font("Serif", Font.BOLD, 30));
+                    login = new JLabel("Login");
+                    login.setBounds(360,230,150,40);
+                    login.setFont(new Font("Tw Cen MT", Font.ITALIC, 30));
                     panel.add(login);
 
                     userLabel = new JLabel("Username : ");
                     userLabel.setBounds(215, 300, 150, 30);
+                    userLabel.setForeground(new Color(255, 255, 255));
                     userLabel.setFont(new Font("Serif", Font.BOLD, 20));
                     panel.add(userLabel);
 
@@ -44,6 +46,7 @@ public class Login {
 
                     passwordLabel = new JLabel("Password : ");
                     passwordLabel.setBounds(220, 350, 100, 30);
+                    passwordLabel.setForeground(new Color(255, 255, 255));
                     passwordLabel.setFont(new Font("Serif", Font.BOLD, 20));
                     panel.add(passwordLabel);
 
@@ -55,11 +58,18 @@ public class Login {
 
                     showPassword = new JCheckBox("Show Password");
                     showPassword.setBounds(350, 400, 200, 30);
+                    showPassword.setBackground(new Color(50,0,255));
+                    showPassword.setForeground(new Color(255, 255, 255));
                     showPassword.setFont(new Font("Serif", Font.PLAIN, 17));
                     panel.add(showPassword);
 
                     loginButton = new JButton("LOGIN");
-                    loginButton.setBounds(350, 480, 70, 30);
+                    loginButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                    loginButton.setForeground(new Color(0, 0, 0));
+                    loginButton.setBackground(new Color(240, 248, 255));
+                    loginButton.setFont(new Font("Serif", Font.BOLD, 15 ));
+                    loginButton.setBounds(300, 480, 100, 30);
+
                     panel.add(loginButton);
 
                     loginButton.addActionListener(new ActionListener() {
@@ -80,7 +90,11 @@ public class Login {
                     });
 
                     resetButton = new JButton("RESET");
-                    resetButton.setBounds(460, 480, 80, 30);
+                    resetButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                    resetButton.setForeground(new Color(0, 0, 0));
+                    resetButton.setBackground(new Color(240, 248, 255));
+                    resetButton.setBounds(430, 480, 100, 30);
+                    resetButton.setFont(new Font("Serif", Font.BOLD, 15 ));
                     panel.add(resetButton);
 
                     resetButton.addActionListener(new ActionListener() {
@@ -96,7 +110,7 @@ public class Login {
                                 passwordField.setEchoChar((char) 0);
 
                             } else {
-                                passwordField.setEchoChar('●');
+                                passwordField.setEchoChar('\u25CF');
                             }
                         }
                     });
