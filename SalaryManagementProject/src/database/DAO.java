@@ -3,7 +3,7 @@ package database;
 import java.awt.event.ActionEvent;
 import java.sql.*;
 
-import guiPages.GenerateSalary;
+import gui.GenerateSalary;
 
 public class DAO {
 		
@@ -25,21 +25,90 @@ public class DAO {
 				float basicsal = rs.getFloat("BASIC SALARY");
 				float hra = rs.getFloat("HRA");
 				float da = rs.getFloat("DA");
+				String month = rs.getString("MONTH");
+				int year = rs.getInt("YEAR");
+				String yr = Integer.toString(year);
+				
 				gs.btn1.addActionListener(new java.awt.event.ActionListener() {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						// TODO Auto-generated method stub
 						float sal = 0.0f;
-
-						if(((String)gs.cb1.getSelectedItem()).equalsIgnoreCase(name))
+						String yea = (String)gs.cb3.getSelectedItem();
+						int ys = Integer.parseInt(yea);
+						String mont = null;
+						String s = (String)gs.cb4.getSelectedItem();
+						
+							if(s.equalsIgnoreCase("JANUARY"))
+							{
+									if(yea.equalsIgnoreCase("2015"))
+									{
+										gs.t1.setText("0");
+										gs.t2.setText("0");
+										gs.t3.setText("0");
+										gs.t4.setText("0");
+									}
+									else
+									{
+										mont = "DECEMBER";
+										ys = ys - 1;
+										yea = Integer.toString(ys);
+									}
+							}
+							if(s.equalsIgnoreCase("FEBRUARY"))
+							{
+								mont = "JANUARY";
+							}
+							if(s.equalsIgnoreCase("MARCH"))
+									{
+											mont = "FEBRUARY";
+									}
+							if(s.equalsIgnoreCase("APRIL"))
+									{
+											mont = "MARCH";
+									}
+							if(s.equalsIgnoreCase("MAY"))
+									{
+											mont = "APRIL";
+									}
+							if(s.equalsIgnoreCase("JUNE"))
+									{
+											mont = "MAY";
+									}
+							if(s.equalsIgnoreCase("JULY"))
+									{
+											mont = "JUNE";
+									}
+							if(s.equalsIgnoreCase("AUGUST"))
+									{
+											mont = "JULY";
+									}
+							if(s.equalsIgnoreCase("SEPTEMBER"))
+									{
+											mont = "AUGUST";
+									}
+							if(s.equalsIgnoreCase("OCTOBER"))
+									{
+											mont = "SEPTEMBER";
+									}
+							if(s.equalsIgnoreCase("NOVEMBER"))
+									{
+											mont = "OCTOBER";
+									}
+							if(s.equalsIgnoreCase("DECEMBER"))
+									{
+											mont = "NOVEMBER";
+									}
+						
+						if(((String)gs.cb1.getSelectedItem()).equalsIgnoreCase(name) && (month).equalsIgnoreCase(mont) && (yr).equalsIgnoreCase(yea))                       
 						{
 							gs.t1.setText(Float.toString(basicsal));
 							gs.t2.setText(Float.toString(hra));
 							gs.t3.setText(Float.toString(da));
 							sal = (float) (basicsal + (basicsal * da)/100.00 + (basicsal * hra)/100.00);
 							gs.t4.setText(Float.toString(sal));
-						} 
+						}
 					}
 				});
 			}
@@ -49,10 +118,5 @@ public class DAO {
 			e.printStackTrace();
 		}
 
-	}
-	
-	public static void main(String[] args) {
-		DAO dao = new DAO();
-		dao.getEmployee();
 	}
 }
