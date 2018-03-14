@@ -18,11 +18,12 @@ public class GenerateSalary extends JFrame {
         setIconImage(newImage);
 
         JPanel panel = new JPanel();
-        panel.setBackground(new Color(50, 0, 255));
+        panel.setBackground(new Color(0, 0, 128));
         panel.setLayout(null);
 
         l = new JLabel("Generate Salary");
-        l.setFont(new Font("Tw Cen MT", Font.ITALIC, 30));
+        l.setForeground(new Color(255, 255, 255));
+        l.setFont(new Font("Tw Cen MT", Font.BOLD, 30));
         l.setBounds(300, 20, 250, 50);
         panel.add(l);
 
@@ -35,11 +36,12 @@ public class GenerateSalary extends JFrame {
         //Temporary string array which will be replaced by database
         String employee_name[] = {"", "Sambhunath Datta", "Madhumita Sengupta", "Imon Mukherjee"};
         cb1 = new JComboBox(employee_name);
+        cb1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         ((JLabel)cb1.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
         cb1.setBounds(65, 100, 150, 30);
         cb1.setForeground(new Color(0, 0, 0));
         cb1.setBackground(new Color(240, 248, 255));
-        cb1.setFont(new Font("Serif", Font.BOLD, 15));
+        cb1.setFont(new Font("Serif", Font.PLAIN, 15));
         panel.add(cb1);
 
         designation = new JLabel("Designation :");
@@ -51,11 +53,12 @@ public class GenerateSalary extends JFrame {
         //Temporary string array which will be replaced by database
         String designate[] = {"", "Registrar", "Assistant Registrar", "Assistant Professor"};
         cb2 = new JComboBox(designate);
+        cb2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         ((JLabel)cb2.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
         cb2.setBounds(325, 100, 140, 30);
         cb2.setForeground(new Color(0, 0, 0));
         cb2.setBackground(new Color(240, 248, 255));
-        cb2.setFont(new Font("Serif", Font.BOLD, 15));
+        cb2.setFont(new Font("Serif", Font.PLAIN, 15));
         panel.add(cb2);
 
         month = new JLabel("Month :");
@@ -66,11 +69,12 @@ public class GenerateSalary extends JFrame {
 
         String months[] = {"","JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE","JULY","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER"};
         cb4 = new JComboBox(months);
+        cb4.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         ((JLabel)cb4.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
         cb4.setForeground(new Color(0, 0, 0));
         cb4.setBackground(new Color(240, 248, 255));
         cb4.setBounds(550, 100, 90, 30);
-        cb4.setFont(new Font("Serif", Font.BOLD, 10));
+        cb4.setFont(new Font("Serif", Font.PLAIN, 10));
         panel.add(cb4);
 
         year = new JLabel("Year :");
@@ -81,11 +85,12 @@ public class GenerateSalary extends JFrame {
 
         String years[] = {"", "2015", "2016", "2017", "2018"};
         cb3 = new JComboBox(years);
+        cb3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         ((JLabel)cb3.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
         cb3.setBounds(700, 100, 70, 30);
         cb3.setForeground(new Color(0, 0, 0));
         cb3.setBackground(new Color(240, 248, 255));
-        cb3.setFont(new Font("Serif", Font.BOLD, 15));
+        cb3.setFont(new Font("Serif", Font.PLAIN, 15));
         panel.add(cb3);
 
 
@@ -99,7 +104,8 @@ public class GenerateSalary extends JFrame {
 
 
         l1 = new JLabel("Salary Details");
-        l1.setFont(new Font("Tw Cen MT", Font.ITALIC, 30));
+        l1.setForeground(new Color(255, 255, 255));
+        l1.setFont(new Font("Tw Cen MT", Font.BOLD, 30));
         l1.setBounds(300, 210, 250, 50);
         panel.add(l1);
 
@@ -183,5 +189,4 @@ public class GenerateSalary extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
     }
-
 }
