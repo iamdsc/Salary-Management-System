@@ -19,7 +19,7 @@ public class Login {
                     JCheckBox showPassword;
 
                     JPanel panel = new JPanel();
-                    panel.setBackground(new Color(50, 0, 255));
+                    panel.setBackground(new Color(0, 0, 128));
                     panel.setLayout(null);
 
                     image = new JLabel((new ImageIcon(img.getImage().getScaledInstance(150,150,Image.SCALE_SMOOTH))));
@@ -28,8 +28,9 @@ public class Login {
                     panel.add(image);
 
                     login = new JLabel("Login");
+                    login.setForeground(new Color(255, 255, 255));
                     login.setBounds(360,230,150,40);
-                    login.setFont(new Font("Tw Cen MT", Font.ITALIC, 30));
+                    login.setFont(new Font("Tw Cen MT", Font.BOLD, 30));
                     panel.add(login);
 
                     userLabel = new JLabel("Username : ");
@@ -58,7 +59,8 @@ public class Login {
 
                     showPassword = new JCheckBox("Show Password");
                     showPassword.setBounds(350, 400, 200, 30);
-                    showPassword.setBackground(new Color(50,0,255));
+                    showPassword.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                    showPassword.setBackground(new Color(0,0,128));
                     showPassword.setForeground(new Color(255, 255, 255));
                     showPassword.setFont(new Font("Serif", Font.PLAIN, 17));
                     panel.add(showPassword);
