@@ -24,11 +24,12 @@ public class ViewYearlyRecord extends JFrame{
         setIconImage(newImage);
 
         JPanel panel = new JPanel();
-        panel.setBackground(new Color(50, 0, 255));
+        panel.setBackground(new Color(0, 0, 128));
         panel.setLayout(null);
 
         l = new JLabel("View Record");
-        l.setFont(new Font("Tw Cen MT", Font.ITALIC, 30));
+        l.setForeground(new Color(255, 255, 255));
+        l.setFont(new Font("Tw Cen MT", Font.BOLD, 30));
         l.setBounds(320, 20, 250, 50);
         panel.add(l);
 
@@ -41,6 +42,7 @@ public class ViewYearlyRecord extends JFrame{
         //Temporary string array which will be replaced by database
         String employee_name[] = {"", "Sambhunath Datta", "Madhumita Sengupta", "Imon Mukherjee"};
         cb1 = new JComboBox(employee_name);
+        cb1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         ((JLabel)cb1.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
         cb1.setBounds(300, 100, 200, 30);
         cb1.setForeground(new Color(0, 0, 0));
@@ -57,6 +59,7 @@ public class ViewYearlyRecord extends JFrame{
         //Temporary string array which will be replaced by database
         String designate[] = {"", "Registrar", "Assistant Registrar", "Assistant Professor"};
         cb2 = new JComboBox(designate);
+        cb2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         ((JLabel)cb2.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
         cb2.setBounds(300, 150, 200, 30);
         cb2.setForeground(new Color(0, 0, 0));
@@ -72,6 +75,7 @@ public class ViewYearlyRecord extends JFrame{
 
         String years[]={"","2015","2016","2017","2018"};
         cb3 = new JComboBox(years);
+        cb3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         ((JLabel)cb3.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
         cb3.setBounds(350, 200, 100, 30);
         cb3.setForeground(new Color(0, 0, 0));
@@ -113,7 +117,7 @@ public class ViewYearlyRecord extends JFrame{
 
         JScrollPane scrollPane = new JScrollPane(table);
         scrollPane.setBorder(BorderFactory.createEmptyBorder(0, 100, 10, 100));
-        scrollPane.setBackground(new Color(50, 0, 255));
+        scrollPane.setBackground(new Color(0, 0, 128));
         add(scrollPane);
 
 
@@ -123,5 +127,5 @@ public class ViewYearlyRecord extends JFrame{
         setSize(800,700);
         setLocationRelativeTo(null);
         setVisible(true);
-    }
+        }
 }
