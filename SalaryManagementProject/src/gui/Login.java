@@ -14,8 +14,8 @@ public class Login {
                     Image newImage = img.getImage().getScaledInstance(25,25,Image.SCALE_SMOOTH);
                     frame.setIconImage(newImage);
 
-                    JLabel login,image, userLabel, passwordLabel;
-                    JButton loginButton, resetButton;
+                    JLabel login,image, userLabel, passwordLabel, signuplabel;
+                    JButton loginButton, resetButton, signup;
                     JCheckBox showPassword;
 
                     JPanel panel = new JPanel();
@@ -65,13 +65,23 @@ public class Login {
                     showPassword.setFont(new Font("Serif", Font.PLAIN, 17));
                     panel.add(showPassword);
 
-                    loginButton = new JButton("LOGIN");
+                    showPassword.addActionListener(new ActionListener() {
+                        public void actionPerformed(ActionEvent e) {
+                            if (showPassword.isSelected()) {
+                                passwordField.setEchoChar((char) 0);
+
+                            } else {
+                                passwordField.setEchoChar('\u25CF');
+                            }
+                        }
+                    });
+
+                    loginButton = new JButton("Login");
                     loginButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                     loginButton.setForeground(new Color(0, 0, 0));
                     loginButton.setBackground(new Color(240, 248, 255));
                     loginButton.setFont(new Font("Serif", Font.BOLD, 15 ));
-                    loginButton.setBounds(300, 480, 100, 30);
-
+                    loginButton.setBounds(300, 480, 80, 30);
                     panel.add(loginButton);
 
                     loginButton.addActionListener(new ActionListener() {
@@ -91,11 +101,11 @@ public class Login {
                         }
                     });
 
-                    resetButton = new JButton("RESET");
+                    resetButton = new JButton("Reset");
                     resetButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
                     resetButton.setForeground(new Color(0, 0, 0));
                     resetButton.setBackground(new Color(240, 248, 255));
-                    resetButton.setBounds(430, 480, 100, 30);
+                    resetButton.setBounds(430, 480, 80, 30);
                     resetButton.setFont(new Font("Serif", Font.BOLD, 15 ));
                     panel.add(resetButton);
 
@@ -106,16 +116,20 @@ public class Login {
                         }
                     });
 
-                    showPassword.addActionListener(new ActionListener() {
-                        public void actionPerformed(ActionEvent e) {
-                            if (showPassword.isSelected()) {
-                                passwordField.setEchoChar((char) 0);
+                    signuplabel = new JLabel("New User?");
+                    signuplabel.setBounds(300, 550, 150, 30);
+                    signuplabel.setForeground(new Color(255, 255, 255));
+                    signuplabel.setFont(new Font("Serif", Font.BOLD, 20));
+                    panel.add(signuplabel);
 
-                            } else {
-                                passwordField.setEchoChar('\u25CF');
-                            }
-                        }
-                    });
+                    signup = new JButton("Sign Up");
+                    signup.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                    signup.setForeground(new Color(0, 0, 0));
+                    signup.setBackground(new Color(240, 248, 255));
+                    signup.setBounds(410, 560, 80, 20);
+                    signup.setFont(new Font("Serif", Font.BOLD, 12 ));
+                    panel.add(signup);
+
                     frame.add(panel);
                     frame.setSize(800, 700);
                     frame.setVisible(true);
