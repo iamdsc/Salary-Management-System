@@ -1,6 +1,7 @@
 package database;
 
 import java.awt.event.ActionEvent;
+
 import java.sql.*;
 
 import gui.GenerateSalary;
@@ -26,6 +27,7 @@ public class DAO {
 				float hra = rs.getFloat("HRA");
 				float da = rs.getFloat("DA");
 				String month = rs.getString("MONTH");
+				//int mot = Integer.parseInt(month);
 				int year = rs.getInt("YEAR");
 				String yr = Integer.toString(year);
 				
@@ -34,7 +36,6 @@ public class DAO {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						// TODO Auto-generated method stub
-						float sal = 0.0f;
 						String yea = (String)gs.cb3.getSelectedItem();
 						int ys = Integer.parseInt(yea);
 						String mont = null;
@@ -101,22 +102,64 @@ public class DAO {
 											mont = "NOVEMBER";
 									}
 						
+						//int f= 0;
+						//System.out.println(mont+" "+yea);
 						if(((String)gs.cb1.getSelectedItem()).equalsIgnoreCase(name) && (month).equalsIgnoreCase(mont) && (yr).equalsIgnoreCase(yea))                       
 						{
 							gs.t1.setText(Float.toString(basicsal));
 							gs.t2.setText(Float.toString(hra));
 							gs.t3.setText(Float.toString(da));
-							sal = (float) (basicsal + (basicsal * da)/100.00 + (basicsal * hra)/100.00);
+							float sal = (float) (basicsal + (basicsal * da)/100.00 + (basicsal * hra)/100.00);
 							gs.t4.setText(Float.toString(sal));
-						}
+							//f =1;
+						} 
 					}
 				});
+				
 			}
+			gs.btn2.addActionListener(new java.awt.event.ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					
+					float basal = Float.parseFloat(gs.t1.getText());
+					float ha = Float.parseFloat(gs.t2.getText());
+					float d = Float.parseFloat(gs.t3.getText());
+					
+					Connection con1 = DBConnection.getConnection();
+					try {
+						
+						String insert = "INSERT INTO projectDatabase.projectDatabase VALUES(?,?,?,?,?,?,NULL)";
+
+						PreparedStatement ps1 = con1.prepareStatement(insert);
+
+						ps1.setString(1, (String)gs.cb1.getSelectedItem());
+						ps1.setFloat(2, basal);
+						ps1.setFloat(3, ha);
+						ps1.setFloat(4, d);
+						ps1.setString(5, (String)gs.cb4.getSelectedItem());
+						ps1.setInt(6, Integer.parseInt((String) gs.cb3.getSelectedItem()));
+					
+						ps1.executeUpdate();
+
+					} catch (Exception e1) {
+
+						e1.printStackTrace();
+					}
+				}
+			});
+			
 
 		} catch (Exception e) {
 
 			e.printStackTrace();
 		}
 
+	}
+	
+	public static void main(String[] args) {
+		DAO dao = new DAO();
+		dao.getEmployee();
 	}
 }
