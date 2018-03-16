@@ -7,7 +7,9 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.print.PrinterException;
 
 public class ViewYearlyRecord extends JFrame{
 
@@ -24,7 +26,7 @@ public class ViewYearlyRecord extends JFrame{
         setIconImage(newImage);
 
         JPanel panel = new JPanel();
-        panel.setBackground(new Color(0, 0, 128));
+        panel.setBackground(new Color(66, 134, 244));
         panel.setLayout(null);
 
         l = new JLabel("View Record");
@@ -100,6 +102,16 @@ public class ViewYearlyRecord extends JFrame{
         btn2.setBounds(430, 260, 70, 30);
         panel.add(btn2);
 
+        btn2.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    try {
+                        table.print();
+                    } catch (PrinterException pe) {
+                        System.err.println("Error printing: " + pe.getMessage());
+                    }
+                }
+        });
+
         Object columnNames[] = {"MONTH", "BASIC SALARY", "HRA", "DA","TOTAL"};
         DAO_2 dao2 = new DAO_2();
 
@@ -117,9 +129,7 @@ public class ViewYearlyRecord extends JFrame{
 
         JScrollPane scrollPane = new JScrollPane(table);
         scrollPane.setBorder(BorderFactory.createEmptyBorder(0, 100, 10, 100));
-        scrollPane.setBackground(new Color(0, 0, 128));
-        add(scrollPane);
-
+        scrollPane.setBackground(new Color(66, 134, 244));
 
         add(panel);
         add(scrollPane);
