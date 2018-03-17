@@ -26,19 +26,19 @@ public class DAO_2 {
 		try {
 
 			String insert = "select * from projectDatabase.projectDatabase";
-			String insert1 = "select COUNT(*) from projectDatabase.projectDatabase";
 
 			PreparedStatement ps = conn.prepareStatement(insert);
-			PreparedStatement ps1 = conn1.prepareStatement(insert1);
+			PreparedStatement ps1 = conn1.prepareStatement(insert);
 
 			ResultSet rs1 = ps.executeQuery();
 			ResultSet rs2 = ps1.executeQuery();
             while (rs2.next()){
-                count = rs2.getInt(1);
+                count++;
             }
 			
 			while(rs1.next())
 			{
+					
 				String name = rs1.getString("NAME");
 				float basicsal = rs1.getFloat("BASIC SALARY");
 				float hra = rs1.getFloat("HRA");
@@ -56,27 +56,23 @@ public class DAO_2 {
 						if(b.equals(vr.btn1))
 							t++;
 						
-						//System.out.println(t);
+						if(t == count+1)
+						{
+							t = 1;
+							    for (int i = vr.model.getRowCount() - 1; i > -1; i--) {
+							    	vr.model.removeRow(i);
+							}
+						}
+						
 						if(((String)vr.cb1.getSelectedItem()).equalsIgnoreCase(name) && ((String)vr.cb3.getSelectedItem()).equalsIgnoreCase(years))
 						{
-							//t = 1;
-//							gs.t1.setText(Float.toString(basicsal));
-//							gs.t2.setText(Float.toString(hra));
-//							gs.t3.setText(Float.toString(da));
+							
 							sal = (float) (basicsal + (basicsal * da)/100.00 + (basicsal * hra)/100.00);
-//							gs.t4.setText(Float.toString(sal));
 							
 							Object dat[] = {month, Float.toString(basicsal), Float.toString(hra), Float.toString(da), Float.toString(sal)};
 							vr.model.addRow(dat);
 						} 
 						
-						if(t == 11)
-						{
-							t = 0;
-							    for (int i = vr.model.getRowCount() - 1; i > -1; i--) {
-							    	vr.model.removeRow(i);
-							}
-						}
 					}
 			});
 		}
@@ -85,10 +81,5 @@ public class DAO_2 {
 			e.printStackTrace();
 		}
 
-	}
-	
-	public static void main(String[] args) {
-		DAO_2 dao2 = new DAO_2();
-		dao2.getEmployee();
 	}
 }
