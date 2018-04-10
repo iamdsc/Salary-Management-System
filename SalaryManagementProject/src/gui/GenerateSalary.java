@@ -17,8 +17,23 @@ public class GenerateSalary extends JFrame {
         Image newImage = img.getImage().getScaledInstance(25,25,Image.SCALE_SMOOTH);
         setIconImage(newImage);
 
-        JPanel panel = new JPanel();
-        panel.setBackground(new Color(0, 0, 128));
+        JPanel panel = new JPanel()
+        {
+            @Override
+            public void paintComponent(Graphics grphcs) {
+                super.paintComponent(grphcs);
+                Graphics2D g2d = (Graphics2D) grphcs;
+                g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+                int w = getWidth();
+                int h = getHeight();
+                Color color1 = new Color(66, 223, 244);
+                Color color2 = new Color(66, 244, 188);
+                GradientPaint gp = new GradientPaint(0, 0, color1, 0, h, color2);
+                g2d.setPaint(gp);
+                g2d.fillRect(0, 0, w, h);
+            }
+        };
+        // panel.setBackground(new Color(66, 134, 244));
         panel.setLayout(null);
 
         l = new JLabel("Generate Salary");

@@ -6,136 +6,185 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Login {
-        public static void main(String[] args) {
-            SwingUtilities.invokeLater(new Runnable() {
-                public void run() {
-                    JFrame frame = new JFrame("Salary Management System Login");
-                    ImageIcon img = new ImageIcon("img/logo.png");
-                    Image newImage = img.getImage().getScaledInstance(25,25,Image.SCALE_SMOOTH);
-                    frame.setIconImage(newImage);
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                JFrame frame = new JFrame("Salary Management System Login");
+                ImageIcon img = new ImageIcon("img/logo.png");
+                Image newImage = img.getImage().getScaledInstance(25,25,Image.SCALE_SMOOTH);
+                frame.setIconImage(newImage);
 
-                    JLabel login,image, userLabel, passwordLabel, signuplabel;
-                    JButton loginButton, resetButton, signup;
-                    JCheckBox showPassword;
+                JLabel login,image, userLabel, passwordLabel, signuplabel;
+                JButton loginButton, resetButton, signup;
+                JCheckBox showPassword;
 
-                    JPanel panel = new JPanel();
-                    panel.setBackground(new Color(0, 0, 128));
-                    panel.setLayout(null);
+                GridBagLayout gbag = new GridBagLayout();
+                GridBagConstraints cons = new GridBagConstraints();
 
-                    image = new JLabel((new ImageIcon(img.getImage().getScaledInstance(150,150,Image.SCALE_SMOOTH))));
+                cons.fill = GridBagConstraints.CENTER;
+                cons.weightx = 0.5;
+                cons.weighty = 0.5;
+                cons.gridx = 0;
+                cons.gridwidth = 2;
+                cons.ipady = 10;
+                cons.ipadx = 10;
 
-                    image.setBounds(280, 5, img.getIconWidth(), img.getIconHeight());
-                    panel.add(image);
+                JPanel panel = new JPanel(){
+                    @Override
+                    public void paintComponent(Graphics grphcs) {
+                        super.paintComponent(grphcs);
+                        Graphics2D g2d = (Graphics2D) grphcs;
+                        g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+                        int w = getWidth();
+                        int h = getHeight();
+                        Color color1 = new Color(66, 223, 244);
+                        Color color2 = new Color(66, 244, 188);
+                        GradientPaint gp = new GradientPaint(0, 0, color1, 0, h, color2);
+                        g2d.setPaint(gp);
+                        g2d.fillRect(0, 0, w, h);
+                    }
+                };
 
-                    login = new JLabel("Login");
-                    login.setForeground(new Color(255, 255, 255));
-                    login.setBounds(360,230,150,40);
-                    login.setFont(new Font("Tw Cen MT", Font.BOLD, 30));
-                    panel.add(login);
+                cons.gridy = 0;
+                image = new JLabel((new ImageIcon(img.getImage().getScaledInstance(150,150,Image.SCALE_SMOOTH))));
+                gbag.setConstraints(image, cons);
+                panel.add(image);
 
-                    userLabel = new JLabel("Username : ");
-                    userLabel.setBounds(215, 300, 150, 30);
-                    userLabel.setForeground(new Color(255, 255, 255));
-                    userLabel.setFont(new Font("Serif", Font.BOLD, 20));
-                    panel.add(userLabel);
+                cons.gridy = 1;
+                login = new JLabel("Login");
+                login.setForeground(new Color(255, 255, 255));
+                login.setFont(new Font("Tw Cen MT", Font.BOLD, 30));
+                gbag.setConstraints(login, cons);
+                panel.add(login);
 
-                    JTextField userTextField = new JTextField();
-                    userTextField.setBounds(350, 300, 150, 30);
-                    userTextField.setFont(new Font("Arial", Font.PLAIN, 17));
-                    userTextField.setHorizontalAlignment(JTextField.CENTER);
-                    panel.add(userTextField);
+                cons.gridy = 2;
+                cons.insets = new Insets(0,0,0,250);
+                userLabel = new JLabel("Username : ");
+                userLabel.setForeground(new Color(255, 255, 255));
+                userLabel.setFont(new Font("Serif", Font.BOLD, 23));
+                gbag.setConstraints(userLabel, cons);
+                panel.add(userLabel);
 
-                    passwordLabel = new JLabel("Password : ");
-                    passwordLabel.setBounds(220, 350, 100, 30);
-                    passwordLabel.setForeground(new Color(255, 255, 255));
-                    passwordLabel.setFont(new Font("Serif", Font.BOLD, 20));
-                    panel.add(passwordLabel);
+                cons.ipadx = 250;
+                cons.insets = new Insets(0,250,0,0);
+                JTextField userTextField = new JTextField();
+                userTextField.setFont(new Font("Arial", Font.PLAIN, 17));
+                userTextField.setHorizontalAlignment(JTextField.CENTER);
+                gbag.setConstraints(userTextField, cons);
+                panel.add(userTextField);
 
-                    JPasswordField passwordField = new JPasswordField();
-                    passwordField.setBounds(350, 350, 150, 30);
-                    passwordField.setFont(new Font("Arial", Font.PLAIN, 17));
-                    passwordField.setHorizontalAlignment(JPasswordField.CENTER);
-                    panel.add(passwordField);
+                cons.gridy = 3;
+                cons.ipadx = 10;
+                cons.insets = new Insets(0,0,0,250);
+                passwordLabel = new JLabel("Password : ");
+                passwordLabel.setForeground(new Color(255, 255, 255));
+                passwordLabel.setFont(new Font("Serif", Font.BOLD, 23));
+                gbag.setConstraints(passwordLabel, cons);
+                panel.add(passwordLabel);
 
-                    showPassword = new JCheckBox("Show Password");
-                    showPassword.setBounds(350, 400, 200, 30);
-                    showPassword.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-                    showPassword.setBackground(new Color(0,0,128));
-                    showPassword.setForeground(new Color(255, 255, 255));
-                    showPassword.setFont(new Font("Serif", Font.PLAIN, 17));
-                    panel.add(showPassword);
+                cons.ipadx = 250;
+                cons.insets = new Insets(0,250,0,0);
+                JPasswordField passwordField = new JPasswordField();
+                passwordField.setFont(new Font("Arial", Font.PLAIN, 17));
+                passwordField.setHorizontalAlignment(JPasswordField.CENTER);
+                gbag.setConstraints(passwordField, cons);
+                panel.add(passwordField);
 
-                    showPassword.addActionListener(new ActionListener() {
-                        public void actionPerformed(ActionEvent e) {
-                            if (showPassword.isSelected()) {
-                                passwordField.setEchoChar((char) 0);
+                cons.gridy = 4;
+                cons.ipadx = 10;
+                cons.insets = new Insets(0,0,0,0);
+                showPassword = new JCheckBox("Show Password");
+                showPassword.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                showPassword.setBackground(new Color(66, 235, 205));
+                showPassword.setForeground(new Color(255, 255, 255));
+                showPassword.setFont(new Font("Serif", Font.PLAIN, 17));
+                gbag.setConstraints(showPassword, cons);
+                panel.add(showPassword);
 
-                            } else {
-                                passwordField.setEchoChar('\u25CF');
-                            }
+                showPassword.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        if (showPassword.isSelected()) {
+                            passwordField.setEchoChar((char) 0);
+
+                        } else {
+                            passwordField.setEchoChar('\u25CF');
                         }
-                    });
+                    }
+                });
 
-                    loginButton = new JButton("Login");
-                    loginButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-                    loginButton.setForeground(new Color(0, 0, 0));
-                    loginButton.setBackground(new Color(240, 248, 255));
-                    loginButton.setFont(new Font("Serif", Font.BOLD, 15 ));
-                    loginButton.setBounds(300, 480, 80, 30);
-                    panel.add(loginButton);
+                cons.gridy = 5;
+                cons.insets = new Insets(0,0,0,250);
+                loginButton = new JButton("Login");
+                loginButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                loginButton.setForeground(new Color(0, 0, 0));
+                loginButton.setBackground(new Color(240, 248, 255));
+                loginButton.setFont(new Font("Serif", Font.BOLD, 18 ));
+                gbag.setConstraints(loginButton, cons);
+                panel.add(loginButton);
 
-                    loginButton.addActionListener(new ActionListener() {
-                        public void actionPerformed(ActionEvent e) {
-                            String userText;
-                            String pwdText;
+                loginButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        String userText;
+                        String pwdText;
 
-                            userText = userTextField.getText();
-                            pwdText = passwordField.getText();
+                        userText = userTextField.getText();
+                        pwdText = passwordField.getText();
 
-                            if (userText.equalsIgnoreCase("iiitkalyani") && pwdText.equalsIgnoreCase("officestaff")) {
-                                JOptionPane.showMessageDialog(panel, "Login Successful");
-                                home h = new home();
-                            } else {
-                                JOptionPane.showMessageDialog(panel, "Invalid Username or Password");
-                            }
+                        if (userText.equalsIgnoreCase("iiitkalyani") && pwdText.equalsIgnoreCase("officestaff")) {
+                            JOptionPane.showMessageDialog(panel, "Login Successful");
+                            home h = new home();
+                        } else {
+                            JOptionPane.showMessageDialog(panel, "Invalid Username or Password");
                         }
-                    });
+                    }
+                });
 
-                    resetButton = new JButton("Reset");
-                    resetButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-                    resetButton.setForeground(new Color(0, 0, 0));
-                    resetButton.setBackground(new Color(240, 248, 255));
-                    resetButton.setBounds(430, 480, 80, 30);
-                    resetButton.setFont(new Font("Serif", Font.BOLD, 15 ));
-                    panel.add(resetButton);
+                cons.gridy = 5;
+                cons.insets = new Insets(0,250,0,0);
+                resetButton = new JButton("Reset");
+                resetButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                resetButton.setForeground(new Color(0, 0, 0));
+                resetButton.setBackground(new Color(240, 248, 255));
+                resetButton.setFont(new Font("Serif", Font.BOLD, 18 ));
+                gbag.setConstraints(resetButton, cons);
+                panel.add(resetButton);
 
-                    resetButton.addActionListener(new ActionListener() {
-                        public void actionPerformed(ActionEvent e) {
-                            userTextField.setText("");
-                            passwordField.setText("");
-                        }
-                    });
+                resetButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        userTextField.setText("");
+                        passwordField.setText("");
+                    }
+                });
 
-                    signuplabel = new JLabel("New User?");
-                    signuplabel.setBounds(300, 550, 150, 30);
-                    signuplabel.setForeground(new Color(255, 255, 255));
-                    signuplabel.setFont(new Font("Serif", Font.BOLD, 20));
-                    panel.add(signuplabel);
+                cons.gridy = 6;
+                cons.insets = new Insets(0,0,0,120);
+                signuplabel = new JLabel("New User?");
+                signuplabel.setForeground(new Color(255, 255, 255));
+                signuplabel.setFont(new Font("Serif", Font.BOLD, 18));
+                gbag.setConstraints(signuplabel, cons);
+                panel.add(signuplabel);
 
-                    signup = new JButton("Sign Up");
-                    signup.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-                    signup.setForeground(new Color(0, 0, 0));
-                    signup.setBackground(new Color(240, 248, 255));
-                    signup.setBounds(410, 560, 80, 20);
-                    signup.setFont(new Font("Serif", Font.BOLD, 12 ));
-                    panel.add(signup);
+                cons.ipadx = 5;
+                cons.ipady = 5;
+                cons.insets = new Insets(0,120,0,0);
+                signup = new JButton("Sign Up");
+                signup.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                signup.setForeground(new Color(0, 0, 0));
+                signup.setBackground(new Color(240, 248, 255));
+                signup.setFont(new Font("Serif", Font.BOLD, 15 ));
+                gbag.setConstraints(signup, cons);
+                panel.add(signup);
 
-                    frame.add(panel);
-                    frame.setSize(800, 700);
-                    frame.setVisible(true);
-                    frame.setLocationRelativeTo(null);
-                    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                }
-            });
-        }
+                panel.setLayout(gbag);
+                frame.add(panel);
+
+                //frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                //frame.setMinimumSize(new Dimension(800,700));
+                frame.setSize(800, 700);
+                frame.setLocationRelativeTo(null);
+                frame.setVisible(true);
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            }
+        });
+    }
 }
