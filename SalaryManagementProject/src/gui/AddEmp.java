@@ -193,7 +193,8 @@ public class AddEmp extends JFrame{
 	                panel.add(signupbutton);
 
 	                signupbutton.addActionListener(new ActionListener() {
-	                    public void actionPerformed(ActionEvent e) {
+	                    @SuppressWarnings("deprecation")
+						public void actionPerformed(ActionEvent e) {
 	                        String confPwdText;
 	                        String pwdText;
 
