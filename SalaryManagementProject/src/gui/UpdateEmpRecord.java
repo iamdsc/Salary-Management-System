@@ -100,8 +100,7 @@ public class UpdateEmpRecord extends JFrame{
 
 	        b3.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
-	                DAO dao = new DAO();
-	                dao.getEmployee();
+	                DAO.getEmployee();
 	            }
 	        });
 
