@@ -1,7 +1,6 @@
 package gui;
 
 
-import database.DAO;
 import database.DAO_2;
 
 import javax.swing.*;
@@ -10,14 +9,24 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class home extends JFrame{
-    public home(){
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public home(){
         super("Salary Management System");
         ImageIcon img = new ImageIcon("img/logo.png");
         Image newImage = img.getImage().getScaledInstance(35,35,Image.SCALE_SMOOTH);
         setIconImage(newImage);
 
         JPanel panel = new JPanel() {
-            @Override
+            /**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			@Override
             public void paintComponent(Graphics grphcs) {
                 super.paintComponent(grphcs);
                 Graphics2D g2d = (Graphics2D) grphcs;
@@ -57,8 +66,7 @@ public class home extends JFrame{
 
         b2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                DAO_2 dao2 = new DAO_2();
-                dao2.getEmployee();
+                DAO_2.getEmployee();
             }
         });
 
