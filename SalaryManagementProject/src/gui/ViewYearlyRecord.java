@@ -40,7 +40,7 @@ public class ViewYearlyRecord extends JFrame{
                 g2d.fillRect(0, 0, w, h);
             }
         };
-        // panel.setBackground(new Color(66, 134, 244));
+        
         panel.setLayout(null);
 
         l = new JLabel("View Record");
@@ -120,6 +120,7 @@ public class ViewYearlyRecord extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 try {
                     table.print();
+                    dispose();
                 } catch (PrinterException pe) {
                     System.err.println("Error printing: " + pe.getMessage());
                 }
@@ -156,7 +157,6 @@ public class ViewYearlyRecord extends JFrame{
                 g2d.fillRect(0, 0, w, h);
             }};
         scrollPane.setBorder(BorderFactory.createEmptyBorder(0, 100, 10, 100));
-        //scrollPane.setBackground(new Color(66, 134, 244));
 
         add(panel);
         add(scrollPane);
