@@ -1,6 +1,7 @@
 package database;
 
 import gui.GenerateSalary;
+import gui.SalaryDetails;
 
 import java.awt.event.ActionEvent;
 import java.sql.Connection;
@@ -15,7 +16,7 @@ public class DAO {
         Connection conn = DBConnection.getConnection();
         try {
 
-            String insert = "select * from projectDatabase.projectDatabase";
+            String insert = "select * from projectDatabase.SalaryRecord";
 
             PreparedStatement ps = conn.prepareStatement(insert);
 
@@ -35,6 +36,7 @@ public class DAO {
 
                     @Override
                     public void actionPerformed(ActionEvent e) {
+
                         // TODO Auto-generated method stub
                         String yea = (String)gs.cb3.getSelectedItem();
                         int ys = Integer.parseInt(yea);
@@ -104,62 +106,66 @@ public class DAO {
 
                         if(((String)gs.cb1.getSelectedItem()).equalsIgnoreCase(name) && (month).equalsIgnoreCase(mont) && (yr).equalsIgnoreCase(yea))
                         {
-                            gs.t1.setText(Float.toString(basicsal));
-                            gs.t2.setText(Float.toString(hra));
-                            gs.t3.setText(Float.toString(da));
+                        	   SalaryDetails details = new SalaryDetails();
+                        	    
+                            details.t1.setText(Float.toString(basicsal));
+                            details.t2.setText(Float.toString(hra));
+                            details.t3.setText(Float.toString(da));
                             float sal = (float) (basicsal + (basicsal * da)/100.00 + (basicsal * hra)/100.00);
-                            gs.t4.setText(Float.toString(sal));
+                            details.t4.setText(Float.toString(sal));
+                            
+                            details.btn3.addActionListener(new java.awt.event.ActionListener(){
+                                
+                                @Override
+                                public void actionPerformed(ActionEvent e) {
+
+                                    float bs,hra,da,total;
+                                    bs = Float.parseFloat(details.t1.getText());
+                                    hra = Float.parseFloat(details.t2.getText());
+                                    da = Float.parseFloat(details.t3.getText());
+                                    total = (float)(bs + (bs * da) / 100.0 + (bs * hra) / 100.0);
+                                    details.t4.setText(Float.toString(total));
+                                }
+                            });
+
+                            details.btn2.addActionListener(new java.awt.event.ActionListener() {
+
+                                @Override
+                                public void actionPerformed(ActionEvent e) {
+                                    // TODO Auto-generated method stub
+
+                                    float basal = Float.parseFloat(details.t1.getText());
+                                    float ha = Float.parseFloat(details.t2.getText());
+                                    float d = Float.parseFloat(details.t3.getText());
+
+                                    Connection con1 = DBConnection.getConnection();
+                                    try {
+
+                                        String insert = "INSERT INTO projectDatabase.SalaryRecord VALUES(?,?,?,?,?,?,?,NULL)";
+
+                                        PreparedStatement ps1 = con1.prepareStatement(insert);
+
+                                        ps1.setString(1, (String)gs.cb1.getSelectedItem());
+                                        ps1.setFloat(2, basal);
+                                        ps1.setFloat(3, ha);
+                                        ps1.setFloat(4, d);
+                                        ps1.setString(5, (String)gs.cb4.getSelectedItem());
+                                        ps1.setInt(6, Integer.parseInt((String) gs.cb3.getSelectedItem()));
+                                        ps1.setFloat(7, sal);
+
+                                        ps1.executeUpdate();
+
+                                    } catch (Exception e1) {
+
+                                        e1.printStackTrace();
+                                    }
+                                }
+                            });
                         }
                     }
                 });
 
             }
-
-            gs.btn3.addActionListener(new java.awt.event.ActionListener(){
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    float bs,hra,da,total;
-                    bs = Float.parseFloat(gs.t1.getText());
-                    hra = Float.parseFloat(gs.t2.getText());
-                    da = Float.parseFloat(gs.t3.getText());
-                    total = (float)(bs + (bs * da) / 100.0 + (bs * hra) / 100.0);
-                    gs.t4.setText(Float.toString(total));
-                }
-            });
-            
-            gs.btn2.addActionListener(new java.awt.event.ActionListener() {
-
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    // TODO Auto-generated method stub
-
-                    float basal = Float.parseFloat(gs.t1.getText());
-                    float ha = Float.parseFloat(gs.t2.getText());
-                    float d = Float.parseFloat(gs.t3.getText());
-
-                    Connection con1 = DBConnection.getConnection();
-                    try {
-
-                        String insert = "INSERT INTO projectDatabase.projectDatabase VALUES(?,?,?,?,?,?,NULL)";
-
-                        PreparedStatement ps1 = con1.prepareStatement(insert);
-
-                        ps1.setString(1, (String)gs.cb1.getSelectedItem());
-                        ps1.setFloat(2, basal);
-                        ps1.setFloat(3, ha);
-                        ps1.setFloat(4, d);
-                        ps1.setString(5, (String)gs.cb4.getSelectedItem());
-                        ps1.setInt(6, Integer.parseInt((String) gs.cb3.getSelectedItem()));
-
-                        ps1.executeUpdate();
-
-                    } catch (Exception e1) {
-
-                        e1.printStackTrace();
-                    }
-                }
-            });
-
 
         } catch (Exception e) {
 
