@@ -67,6 +67,7 @@ public class home extends JFrame{
         b2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 DAO_2.getEmployee();
+				dispose();
             }
         });
 
@@ -80,7 +81,8 @@ public class home extends JFrame{
 
         b3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-               UpdateEmpRecord uer = new UpdateEmpRecord();
+               new UpdateEmpRecord();
+               dispose();
             }
         });
 
