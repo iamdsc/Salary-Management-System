@@ -2,11 +2,20 @@ package database;
 
 import gui.GenerateSalary;
 import gui.SalaryDetails;
+import gui.home;
 
+import java.awt.Color;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 public class DAO {
 
@@ -125,22 +134,23 @@ public class DAO {
                                     da = Float.parseFloat(details.t3.getText());
                                     total = (float)(bs + (bs * da) / 100.0 + (bs * hra) / 100.0);
                                     details.t4.setText(Float.toString(total));
+                                    gs.dispose();
                                 }
                             });
 
                             details.btn2.addActionListener(new java.awt.event.ActionListener() {
-
+                            		
                                 @Override
                                 public void actionPerformed(ActionEvent e) {
                                     // TODO Auto-generated method stub
 
+                                	
                                     float basal = Float.parseFloat(details.t1.getText());
                                     float ha = Float.parseFloat(details.t2.getText());
                                     float d = Float.parseFloat(details.t3.getText());
 
                                     Connection con1 = DBConnection.getConnection();
                                     try {
-
                                         String insert = "INSERT INTO projectDatabase.SalaryRecord VALUES(?,?,?,?,?,?,?,NULL)";
 
                                         PreparedStatement ps1 = con1.prepareStatement(insert);
@@ -154,12 +164,34 @@ public class DAO {
                                         ps1.setFloat(7, sal);
 
                                         ps1.executeUpdate();
+                                        
+
+                                		JPanel panel = new JPanel()
+                                        {
+                                            @Override
+                                            public void paintComponent(Graphics grphcs) {
+                                                super.paintComponent(grphcs);
+                                                Graphics2D g2d = (Graphics2D) grphcs;
+                                                g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+                                                int w = getWidth();
+                                                int h = getHeight();
+                                                Color color1 = new Color(66, 223, 244);
+                                                Color color2 = new Color(66, 244, 188);
+                                                GradientPaint gp = new GradientPaint(0, 0, color1, 0, h, color2);
+                                                g2d.setPaint(gp);
+                                                g2d.fillRect(0, 0, w, h);
+                                            }
+                                        };
+                                        
+                                        JOptionPane.showMessageDialog(panel, "Successfully Saved!");
+                                        home h = new home();
+                                        details.dispose();
 
                                     } catch (Exception e1) {
 
                                         e1.printStackTrace();
                                     }
-                                }
+                                	}
                             });
                         }
                     }
