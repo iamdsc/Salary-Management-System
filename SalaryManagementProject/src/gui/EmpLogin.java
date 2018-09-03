@@ -25,6 +25,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
+import database.DAO_5;
+
 public class EmpLogin extends JFrame{
    
 		public EmpLogin() {
@@ -150,9 +152,12 @@ public class EmpLogin extends JFrame{
                         userText = userTextField.getText();
                         pwdText = passwordField.getText();
 
-                        if (userText.equalsIgnoreCase("master") && pwdText.equalsIgnoreCase("main")) {
+                        int f = DAO_5.getEmp(userText, pwdText);
+                        
+                        
+                        if (f == 1) {
                             JOptionPane.showMessageDialog(panel, "Login Successful");
-                            home h = new home();
+                            HomeEmp h = new HomeEmp();
             					dispose();
                         } else {
                             JOptionPane.showMessageDialog(panel, "Invalid Username or Password");
