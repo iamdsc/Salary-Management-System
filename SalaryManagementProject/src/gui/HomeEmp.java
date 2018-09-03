@@ -23,6 +23,11 @@ import database.DAO_2;
 
 public class HomeEmp extends JFrame{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public HomeEmp(){
         super("Salary Management System");
         ImageIcon img = new ImageIcon("img/logo.png");
