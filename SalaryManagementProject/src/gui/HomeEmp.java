@@ -64,7 +64,6 @@ public class HomeEmp extends JFrame{
         JLabel l1,l2;
 
         JButton b2 = new JButton("View Yearly Record");
-        JButton b3 = new JButton("Update Employee Record");
 
         b2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         b2.setForeground(new Color(0, 0, 0));
@@ -80,20 +79,6 @@ public class HomeEmp extends JFrame{
             }
         });
 
-        cons.gridx = 1;
-        b3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        b3.setForeground(new Color(0, 0, 0));
-        b3.setBackground(new Color(240, 248, 255));
-        b3.setFont(new Font("Serif", Font.BOLD, 18));
-        gbag.setConstraints(b3, cons);
-        panel.add(b3);
-
-        b3.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-               new UpdateEmpRecord();
-               dispose();
-            }
-        });
 
         cons.gridx = 0;
         cons.gridwidth = 3;
