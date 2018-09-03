@@ -5,9 +5,13 @@ import java.awt.*;
 
 public class GenerateSalary extends JFrame {
 
-    JLabel l, l1, name, designation, month, year, basicsal, hra, da, total,sym1, sym2;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	JLabel l, l1, name, designation, month, year, basicsal, hra, da, total,sym1, sym2;
     public static JTextField t1, t2, t3, t4;
-    public static JComboBox cb1, cb2, cb3,cb4;
+    public static JComboBox<?> cb1, cb2, cb3,cb4;
     public JButton btn1, btn2, btn3;
     //public static JSpinner months;
 
@@ -30,7 +34,12 @@ public class GenerateSalary extends JFrame {
 
         JPanel panel = new JPanel()
         {
-            @Override
+            /**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			@Override
             public void paintComponent(Graphics grphcs) {
                 super.paintComponent(grphcs);
                 Graphics2D g2d = (Graphics2D) grphcs;
@@ -64,7 +73,7 @@ public class GenerateSalary extends JFrame {
         cons.ipadx = 50;
         cons.insets = new Insets(0,150,0,0);
         String employee_name[] = {"", "Sambhunath Datta", "Madhumita Sengupta", "Imon Mukherjee"};
-        cb1 = new JComboBox(employee_name);
+        cb1 = new JComboBox<Object>(employee_name);
         cb1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         ((JLabel)cb1.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
         cb1.setForeground(new Color(0, 0, 0));
@@ -86,7 +95,7 @@ public class GenerateSalary extends JFrame {
         cons.ipadx = 50;
         cons.insets = new Insets(0,150,0,0);
         String designate[] = {"", "Registrar", "Assistant Registrar", "Assistant Professor"};
-        cb2 = new JComboBox(designate);
+        cb2 = new JComboBox<Object>(designate);
         cb2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         ((JLabel)cb2.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
         cb2.setForeground(new Color(0, 0, 0));
@@ -107,7 +116,7 @@ public class GenerateSalary extends JFrame {
         cons.ipadx = 50;
         cons.insets = new Insets(0,90,0,0);
         String months[] = {"","JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE","JULY","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER"};
-        cb4 = new JComboBox(months);
+        cb4 = new JComboBox<Object>(months);
         cb4.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         ((JLabel)cb4.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
         cb4.setForeground(new Color(0, 0, 0));
@@ -128,7 +137,7 @@ public class GenerateSalary extends JFrame {
         cons.ipadx = 10;
         cons.insets = new Insets(0,30,0,0);
         String years[] = {"", "2015", "2016", "2017", "2018"};
-        cb3 = new JComboBox(years);
+        cb3 = new JComboBox<Object>(years);
         cb3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         ((JLabel)cb3.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
         cb3.setForeground(new Color(0, 0, 0));
