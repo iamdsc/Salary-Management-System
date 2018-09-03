@@ -23,10 +23,9 @@ public class DAO_4 {
 			String insert = "select * from projectDatabase.SalaryRecord";
 			String delete = "DELETE FROM projectDatabase.SalaryRecord WHERE name=?";
 
-			PreparedStatement ps1 = conn.prepareStatement(delete);
-
 			PreparedStatement ps = conn.prepareStatement(insert);
-
+			PreparedStatement ps1 = conn.prepareStatement(delete);
+			
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
@@ -52,7 +51,42 @@ public class DAO_4 {
 			e.printStackTrace();
 		}
 		
-		if(f==1)
+		if(f==1) {
+		try {
+			
+		String insert2 = "select * from projectDatabase.Signup";
+		String delete2 = "DELETE FROM projectDatabase.Signup WHERE USERNAME=?";
+		
+		PreparedStatement ps2 = conn.prepareStatement(insert2);
+		PreparedStatement ps3 = conn.prepareStatement(delete2);
+		
+		ResultSet rs2 = ps2.executeQuery();
+		
+		while (rs2.next()) {
+			String name = rs2.getString("USERNAME");
+			ps3.setString(1, name);
+
+			if (userTextField.equalsIgnoreCase(name)) {
+				Connection con = DBConnection.getConnection();
+				try {
+
+					ps3.executeUpdate();
+					f = 2;
+
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			} 
+		}
+
+	} catch (Exception e) {
+
+		e.printStackTrace();
+	}
+		}
+		
+		
+		if(f==2)
 		{
 			JOptionPane.showMessageDialog(panel, "Successfully deleted the employee from our records");
 		}
