@@ -1,6 +1,7 @@
 package gui;
 
 import database.DAO_2;
+import database.DBConnection;
 
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
@@ -10,6 +11,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.print.PrinterException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class ViewYearlyRecord extends JFrame{
 
@@ -55,8 +60,29 @@ public class ViewYearlyRecord extends JFrame{
         name.setBounds(200, 100, 100, 30);
         panel.add(name);
 
-        //Temporary string array which will be replaced by database
-        String employee_name[] = {"", "Sambhunath Datta", "Madhumita Sengupta", "Imon Mukherjee"};
+        Connection conn = DBConnection.getConnection();
+		ArrayList<String> empname = new ArrayList<String>();
+		empname.add("");
+		int c= 0;
+		try {
+
+			String insert = "select * from projectDatabase.Signup";
+
+			PreparedStatement ps = conn.prepareStatement(insert);
+			
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				String name = rs.getString("Username");
+				empname.add(name);
+			}
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		}
+		String employee_name[] = new String[empname.size()];
+		empname.toArray(employee_name);
         cb1 = new JComboBox(employee_name);
         cb1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         ((JLabel)cb1.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
