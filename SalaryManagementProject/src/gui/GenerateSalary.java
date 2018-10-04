@@ -123,7 +123,7 @@ public class GenerateSalary extends JFrame {
         //Temporary string array which will be replaced by database
         cons.ipadx = 50;
         cons.insets = new Insets(0,150,0,0);
-        String designate[] = {"", "Registrar", "Assistant Registrar", "Assistant Professor"};
+        String designate[] = {"", "Registrar", "Assistant Registrar", "Assistant Professor","Lab Assistant"};
         cb2 = new JComboBox<Object>(designate);
         cb2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         ((JLabel)cb2.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
