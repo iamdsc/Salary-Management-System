@@ -1,7 +1,14 @@
 package gui;
 
 import javax.swing.*;
+
+import database.DBConnection;
+
 import java.awt.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class GenerateSalary extends JFrame {
 
@@ -72,7 +79,29 @@ public class GenerateSalary extends JFrame {
         //Temporary string array which will be replaced by database
         cons.ipadx = 50;
         cons.insets = new Insets(0,150,0,0);
-        String employee_name[] = {"", "Sambhunath Datta", "Madhumita Sengupta", "Imon Mukherjee"};
+		Connection conn = DBConnection.getConnection();
+		ArrayList<String> empname = new ArrayList<String>();
+		empname.add("");
+		int c= 0;
+		try {
+
+			String insert = "select * from projectDatabase.Signup";
+
+			PreparedStatement ps = conn.prepareStatement(insert);
+			
+			ResultSet rs = ps.executeQuery();
+
+			while (rs.next()) {
+				String name = rs.getString("Username");
+				empname.add(name);
+			}
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		}
+		String employee_name[] = new String[empname.size()];
+		empname.toArray(employee_name);
         cb1 = new JComboBox<Object>(employee_name);
         cb1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         ((JLabel)cb1.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
@@ -94,7 +123,7 @@ public class GenerateSalary extends JFrame {
         //Temporary string array which will be replaced by database
         cons.ipadx = 50;
         cons.insets = new Insets(0,150,0,0);
-        String designate[] = {"", "Registrar", "Assistant Registrar", "Assistant Professor"};
+        String designate[] = {"", "Registrar", "Assistant Registrar", "Assistant Professor","Lab Assistant"};
         cb2 = new JComboBox<Object>(designate);
         cb2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         ((JLabel)cb2.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
@@ -136,7 +165,7 @@ public class GenerateSalary extends JFrame {
 
         cons.ipadx = 10;
         cons.insets = new Insets(0,30,0,0);
-        String years[] = {"", "2015", "2016", "2017", "2018"};
+        String years[] = {"", "2015", "2016", "2017", "2018","2019","2020","2021","2022"};
         cb3 = new JComboBox<Object>(years);
         cb3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         ((JLabel)cb3.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
