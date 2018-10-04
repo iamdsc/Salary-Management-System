@@ -9,9 +9,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class home extends JFrame{
-    /**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	public home(){
@@ -56,6 +53,7 @@ public class home extends JFrame{
 
         JButton b2 = new JButton("View Yearly Record");
         JButton b3 = new JButton("Update Employee Record");
+        JButton backButton;
 
         b2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         b2.setForeground(new Color(0, 0, 0));
@@ -117,6 +115,27 @@ public class home extends JFrame{
         l2.setFont(new Font("Tw Cen MT", Font.BOLD | Font.ITALIC, 35));
         gbag.setConstraints(l2,cons);
         panel.add(l2);
+
+        cons.ipady = 0;
+        cons.ipadx = 0;
+        cons.gridy = 5;
+        cons.fill = GridBagConstraints.WEST;
+        cons.insets = new Insets(0,0,0,700);
+        backButton = new JButton("Back");
+        backButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        backButton.setForeground(new Color(0, 0, 0));
+        backButton.setBackground(new Color(240, 248, 255));
+        backButton.setFont(new Font("Serif", Font.BOLD, 10 ));
+        gbag.setConstraints(backButton, cons);
+        panel.add(backButton);
+
+        backButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                AdmLogin a = new AdmLogin();
+                dispose();
+            }
+        });
+
 
         panel.setLayout(gbag);
         add(panel);

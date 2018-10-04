@@ -31,13 +31,13 @@ public class EmpLogin extends JFrame{
    
 		public EmpLogin() {
         
-    	 			super("Employee Login");
+		        super("Employee Login");
          		ImageIcon img = new ImageIcon("img/logo.png");
          		Image newImage = img.getImage().getScaledInstance(35,35,Image.SCALE_SMOOTH);
          		setIconImage(newImage);
 
                 JLabel login,image, userLabel, passwordLabel;
-                JButton loginButton, resetButton;
+                JButton loginButton, resetButton, backButton;
                 JCheckBox showPassword;
 
                 GridBagLayout gbag = new GridBagLayout();
@@ -179,6 +179,26 @@ public class EmpLogin extends JFrame{
                     public void actionPerformed(ActionEvent e) {
                         userTextField.setText("");
                         passwordField.setText("");
+                    }
+                });
+
+                cons.ipady = 0;
+                cons.ipadx = 0;
+                cons.gridy = 6;
+                cons.fill = GridBagConstraints.WEST;
+                cons.insets = new Insets(0,0,0,700);
+                backButton = new JButton("Back");
+                backButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                backButton.setForeground(new Color(0, 0, 0));
+                backButton.setBackground(new Color(240, 248, 255));
+                backButton.setFont(new Font("Serif", Font.BOLD, 10 ));
+                gbag.setConstraints(backButton, cons);
+                panel.add(backButton);
+
+                backButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        Index i = new Index();
+                        dispose();
                     }
                 });
 

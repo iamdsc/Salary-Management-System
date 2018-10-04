@@ -14,7 +14,7 @@ import java.awt.print.PrinterException;
 public class ViewYearlyRecord extends JFrame{
 
     public static JComboBox cb1, cb2, cb3;
-    public static JButton btn1, btn2;
+    public static JButton btn1, btn2, backButton;
     public static DefaultTableModel model;
     public JTable table;
     JLabel l,name, designation, year;
@@ -105,7 +105,7 @@ public class ViewYearlyRecord extends JFrame{
         btn1.setFont(new Font("Serif", Font.BOLD, 15));
         btn1.setForeground(new Color(0, 0, 0));
         btn1.setBackground(new Color(240, 248, 255));
-        btn1.setBounds(300, 260, 70, 30);
+        btn1.setBounds(150, 260, 70, 30);
         panel.add(btn1);
 
         btn2 = new JButton("Print");
@@ -113,7 +113,7 @@ public class ViewYearlyRecord extends JFrame{
         btn2.setFont(new Font("Serif", Font.BOLD, 15));
         btn2.setForeground(new Color(0, 0, 0));
         btn2.setBackground(new Color(240, 248, 255));
-        btn2.setBounds(430, 260, 70, 30);
+        btn2.setBounds(350, 260, 70, 30);
         panel.add(btn2);
 
         btn2.addActionListener(new ActionListener() {
@@ -124,6 +124,21 @@ public class ViewYearlyRecord extends JFrame{
                 } catch (PrinterException pe) {
                     System.err.println("Error printing: " + pe.getMessage());
                 }
+            }
+        });
+
+        backButton = new JButton("Back");
+        backButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        backButton.setFont(new Font("Serif", Font.BOLD, 15));
+        backButton.setForeground(new Color(0, 0, 0));
+        backButton.setBackground(new Color(240, 248, 255));
+        backButton.setBounds(550, 260, 70, 30);
+        panel.add(backButton);
+
+        backButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                home h = new home();
+                dispose();
             }
         });
 
@@ -157,6 +172,7 @@ public class ViewYearlyRecord extends JFrame{
                 g2d.fillRect(0, 0, w, h);
             }};
         scrollPane.setBorder(BorderFactory.createEmptyBorder(0, 100, 10, 100));
+
 
         add(panel);
         add(scrollPane);

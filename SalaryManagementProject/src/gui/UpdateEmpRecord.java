@@ -1,18 +1,8 @@
 package gui;
 
-import java.awt.Color;
-import java.awt.Cursor;
-import java.awt.Font;
-import java.awt.GradientPaint;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Image;
-import java.awt.RenderingHints;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -62,6 +52,7 @@ public class UpdateEmpRecord extends JFrame{
 	        JButton b1 = new JButton("Add Employee");
 	        JButton b2 = new JButton("Remove Employee");
 	        JButton b3 = new JButton("Generate Employee Salary");
+			JButton backButton;
 
 	        b1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 	        b1.setForeground(new Color(0, 0, 0));
@@ -131,6 +122,26 @@ public class UpdateEmpRecord extends JFrame{
 	        l2.setFont(new Font("Tw Cen MT", Font.BOLD | Font.ITALIC, 35));
 	        gbag.setConstraints(l2,cons);
 	        panel.add(l2);
+
+			cons.ipady = 0;
+			cons.ipadx = 0;
+			cons.gridy = 4;
+			cons.fill = GridBagConstraints.WEST;
+			cons.insets = new Insets(0,0,0,700);
+			backButton = new JButton("Back");
+			backButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+			backButton.setForeground(new Color(0, 0, 0));
+			backButton.setBackground(new Color(240, 248, 255));
+			backButton.setFont(new Font("Serif", Font.BOLD, 10 ));
+			gbag.setConstraints(backButton, cons);
+			panel.add(backButton);
+
+			backButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					home h = new home();
+					dispose();
+				}
+			});
 
 	        panel.setLayout(gbag);
 	        add(panel);

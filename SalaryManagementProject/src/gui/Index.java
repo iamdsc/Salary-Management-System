@@ -25,10 +25,9 @@ import database.DAO_2;
 
 public class Index extends JFrame{
 
-    public static void main(String args[]){
-        
-    	   SwingUtilities.invokeLater(new Runnable() {
-       public void run() {
+    public Index(){
+        SwingUtilities.invokeLater(new Runnable() {
+        public void run() {
         JFrame frame = new JFrame("Salary Management System Login");
         ImageIcon img = new ImageIcon("img/logo.png");
         Image newImage = img.getImage().getScaledInstance(25,25,Image.SCALE_SMOOTH);
@@ -130,5 +129,9 @@ public class Index extends JFrame{
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
        }
     	   });
+    }
+
+    public static void main(String args[]){
+        Index i = new Index();
     }
 }
