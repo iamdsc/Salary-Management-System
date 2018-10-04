@@ -99,7 +99,7 @@ public class ViewYearlyRecord extends JFrame{
         panel.add(designation);
 
         //Temporary string array which will be replaced by database
-        String designate[] = {"", "Registrar", "Assistant Registrar", "Assistant Professor"};
+        String designate[] = {"", "Registrar", "Assistant Registrar", "Assistant Professor","Lab Assistant"};
         cb2 = new JComboBox(designate);
         cb2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         ((JLabel)cb2.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
@@ -115,7 +115,7 @@ public class ViewYearlyRecord extends JFrame{
         year.setBounds(210, 200, 150, 30);
         panel.add(year);
 
-        String years[]={"","2015","2016","2017","2018"};
+        String years[]={"","2015","2016","2017","2018","2019","2020","2021","2022"};
         cb3 = new JComboBox(years);
         cb3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         ((JLabel)cb3.getRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
