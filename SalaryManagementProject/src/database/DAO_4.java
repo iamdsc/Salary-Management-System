@@ -20,8 +20,8 @@ public class DAO_4 {
 		Connection conn = DBConnection.getConnection();
 		try {
 
-			String insert = "select * from projectdatabase.SalaryRecord";
-			String delete = "DELETE FROM projectdatabase.SalaryRecord WHERE name=?";
+			String insert = "select * from projectDatabase.SalaryRecord";
+			String delete = "DELETE FROM projectDatabase.SalaryRecord WHERE name=?";
 
 			PreparedStatement ps = conn.prepareStatement(insert);
 			PreparedStatement ps1 = conn.prepareStatement(delete);
@@ -54,8 +54,8 @@ public class DAO_4 {
 		if(f==1) {
 		try {
 			
-		String insert2 = "select * from projectdatabase.Signup";
-		String delete2 = "DELETE FROM projectdatabase.Signup WHERE USERNAME=?";
+		String insert2 = "select * from projectDatabase.Signup";
+		String delete2 = "DELETE FROM projectDatabase.Signup WHERE USERNAME=?";
 		
 		PreparedStatement ps2 = conn.prepareStatement(insert2);
 		PreparedStatement ps3 = conn.prepareStatement(delete2);
