@@ -81,11 +81,11 @@ public class GenerateSalary extends JFrame {
         cons.insets = new Insets(0,150,0,0);
 		Connection conn = DBConnection.getConnection();
 		ArrayList<String> empname = new ArrayList<String>();
-		empname.add("");
+		empname.add("       ");
 		int c= 0;
 		try {
 
-			String insert = "select * from projectDatabase.Signup";
+			String insert = "select * from projectdatabase.Signup";
 
 			PreparedStatement ps = conn.prepareStatement(insert);
 			

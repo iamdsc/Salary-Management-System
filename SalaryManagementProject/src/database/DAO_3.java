@@ -15,8 +15,8 @@ public class DAO_3 {
 		Connection con1 = DBConnection.getConnection();
 		try {
 
-			String insert = "INSERT INTO projectDatabase.SignUp VALUES(?,?,NULL)";
-			String insert2 = "INSERT INTO projectDatabase.SalaryRecord VALUES(?,?,?,?,?,?,?,NULL)";
+			String insert = "INSERT INTO projectdatabase.SignUp VALUES(?,?,NULL)";
+			String insert2 = "INSERT INTO projectdatabase.SalaryRecord VALUES(?,?,?,?,?,?,?,NULL)";
 
 			PreparedStatement ps1 = con1.prepareStatement(insert);
 

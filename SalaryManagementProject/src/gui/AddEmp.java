@@ -206,7 +206,7 @@ public class AddEmp extends JFrame {
 
 						if (confPwdText.equalsIgnoreCase(pwdText)) {
 							JOptionPane.showMessageDialog(panel,
-									"Successfully Signed Up!\nA confirmation mail with login credentials have been sent to your registered  email address");
+									"Successfully Signed Up!");
 							UpdateEmpRecord uer = new UpdateEmpRecord();
 							DAO_3.setCredentials(username, pwdText);
 
