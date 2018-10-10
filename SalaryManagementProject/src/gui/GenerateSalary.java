@@ -85,7 +85,7 @@ public class GenerateSalary extends JFrame {
 		int c= 0;
 		try {
 
-			String insert = "select * from projectdatabase.Signup";
+			String insert = "select * from projectDatabase.Signup";
 
 			PreparedStatement ps = conn.prepareStatement(insert);
 			
